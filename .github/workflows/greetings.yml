@@ -1,0 +1,36 @@
+name: GitHub Actions Demo
+run-name: User- ${{ github.actor }}, doing manual checkout🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List files in the repository
+        run: |
+          hostname
+          pwd
+          ls
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: manual checkout of code
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "commit SHA: $GITHUB_SHA"
+          echo "repository: $GITHUB_REPOSITORY"
+          echo "secret: ${{ secrets.GITHUB_TOKEN }}"
+          git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+          echo -e "-------- In path: $(pwd)------------- \n\n"
+          cd $(echo "$GITHUB_REPOSITORY" | cut -d "/" -f 2)
+          echo -e "----------- In path: $(pwd)------------ \n\n"
+          git checkout "$GITHUB_SHA"
+          echo -e "-----------Running: git status---------- \n\n"
+          git status
+          ls
+          pwd          
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: actions/hello-world-javascript-action@main
+        with:
+         who-to-greet: 'parjun8840'

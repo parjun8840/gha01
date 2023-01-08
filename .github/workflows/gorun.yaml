@@ -1,0 +1,31 @@
+name: Gocode Actions demo
+run-name: User- ${{ github.actor }}, building & running go application 🚀
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      #Using an existing official action from- https://github.com/actions/checkout
+      - name: Checking out the code 
+        uses: actions/checkout@v3
+      
+      #Writing a multiline script to show verify runner settings
+      - name: listing host, pwd & files
+        run: |
+          hostname
+          pwd
+          ls
+          
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+
+      - name: Run go code
+        id: gorunid
+        run: go run name.go
+
+      - name: Display the Go version
+        run: go version
