@@ -1,6 +1,6 @@
 name: Gocode Actions demo
 run-name: User- ${{ github.actor }}, building & running go application 🚀
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
