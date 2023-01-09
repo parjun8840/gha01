@@ -1,5 +1,5 @@
 name: GitHub Actions schedule event
-run-name: User- ${{ github.actor }}, scheduled this job🚀
+run-name: Scheduled  job🚀
 
 on:
   schedule:
