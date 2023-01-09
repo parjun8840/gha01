@@ -1,0 +1,15 @@
+name: GitHub Actions repository_dispatch event
+run-name: User- ${{ github.actor }}, is running repository_dispatch🚀
+
+on:
+  repository_dispatch:
+    types: [smoke_test]
+
+jobs:
+  run_if_failure:
+    if: ${{ !github.event.client_payload.passed }}
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
