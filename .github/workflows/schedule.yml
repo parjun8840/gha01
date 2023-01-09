@@ -3,8 +3,8 @@ run-name: User- ${{ github.actor }}, scheduled this job🚀
 
 on:
   schedule:
-    - cron: '45 * * * *'
-    - cron: '7 * * * *'
+    - cron: '*/5 * * * *'
+    - cron: '*/28 * * * *'
 
 jobs:
   Explore-GitHub-Actions:
