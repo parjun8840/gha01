@@ -30,7 +30,7 @@ jobs:
           STEP_LEVEL_ENV: available for this specific step only
         run: echo "${STEP_LEVEL_ENV}"
       - name: "Say Hello"
-        if: ${DAY_OF_WEEK} == 'Monday'
+        if: ${{ DAY_OF_WEEK }} == 'Monday'
         run: echo "${GREETING} ${GITHUB_ACTOR}!! Have a great ${DAY_OF_WEEK}"
         env:
           GREETING: Hello
