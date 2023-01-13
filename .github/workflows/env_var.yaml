@@ -35,4 +35,4 @@ jobs:
         env:
           GREETING: Hello
       - name: print REPO_ENV_VAR
-        run: echo "${REPO_ENV_VAR}"
+        run: echo "This is REPO_ENV_VAR: ${REPO_ENV_VAR}"
