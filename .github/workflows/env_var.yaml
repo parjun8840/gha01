@@ -1,0 +1,37 @@
+name: accessing information inside worfkflow
+on: [push]
+env:
+ WF_LEVEL_ENV: available for all jobs in this workflow
+jobs:
+ echo-information:
+ env:
+ JOB_LEVEL_ENV: available for this specific job only
+ DAY_OF_WEEK: Sunday
+ runs-on: ubuntu-latest
+ steps:
+ - name: default environment variables availiable to the entire workflow
+ run: |
+ echo "Home: ${HOME}"
+ echo "GITHUB_WORKFLOW: ${GITHUB_WORKFLOW}"
+ echo "GITHUB_ACTIONS: ${GITHUB_ACTIONS}"
+ echo "GITHUB_ACTOR: ${GITHUB_ACTOR}"
+ echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+ echo "GITHUB_EVENT_NAME: ${GITHUB_EVENT_NAME}"
+ echo "GITHUB_WORKSPACE: ${GITHUB_WORKSPACE}"
+ echo "GITHUB_SHA: ${GITHUB_SHA}"
+ echo "GITHUB_REF: ${GITHUB_REF}"
+ - name: print WF_LEVEL_ENV
+ run: echo "${WF_LEVEL_ENV}"
+ - name: print JOB_LEVEL_ENV
+ run: echo "${JOB_LEVEL_ENV}"
+ - name: print STEP_LEVEL_ENV
+ env:
+ STEP_LEVEL_ENV: available for this specific step only
+ run: echo "${STEP_LEVEL_ENV}"
+ - name: "Say Hello Mona it's Monday"
+ if: ${DAY_OF_WEEK} == 'Monday'
+ run: echo "${GREETING} ${GITHUB_ACTOR}!! Have a great ${DAY_OF_WEEK}"
+ env:
+ GREETING: Hello
+ - name: print REPO_ENV_VAR
+ run: echo "${REPO_ENV_VAR}"
