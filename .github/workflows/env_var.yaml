@@ -24,9 +24,9 @@ jobs:
       - name: print WF_LEVEL_ENV
         run: |
           echo "This is Workflow level variable: ${WF_LEVEL_ENV}"
-          echo "This is Workflow level variable accessing using env context: ${env.WF_LEVEL_ENV}"
+          echo "This is Workflow level variable accessing using env context: ${{ env.WF_LEVEL_ENV }}"
       - name: print JOB_LEVEL_ENV
-        run: echo "This is Job level variable: ${JOB_LEVEL_ENV}"
+        run: echo "This is Job level variable: ${{ JOB_LEVEL_ENV }}"
       - name: print STEP_LEVEL_ENV
         env:
           STEP_LEVEL_ENV: available for this specific step only
