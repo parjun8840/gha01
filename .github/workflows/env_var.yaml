@@ -37,4 +37,4 @@ jobs:
         env:
           GREETING: Hello
       - name: print REPO_ENV_VAR
-        run: echo "This is REPO level varirable- ${vars.REPO_ENV_VAR}"
+        run: echo "This is REPO level varirable- ${{ vars.REPO_ENV_VAR }}"
