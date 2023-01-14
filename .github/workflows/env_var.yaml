@@ -38,3 +38,5 @@ jobs:
           GREETING: Hello
       - name: print REPO_ENV_VAR
         run: echo "This is REPO level varirable- ${{ vars.REPO_ENV_VAR }}"
+      - name: print scret- MY_FIRST_SECRET
+        run: echo "This is secret- ${{ secrets.MY_FIRST_SECRET }}"
