@@ -30,11 +30,11 @@ jobs:
       - name: print STEP_LEVEL_ENV
         env:
           STEP_LEVEL_ENV: available for this specific step only
-        run: echo "This is Step level variable: ${STEP_LEVEL_ENV}"
+        run: echo "This is Step level variable- ${STEP_LEVEL_ENV}"
       - name: "Say Hello"
         if: env.DAY_OF_WEEK == 'Sunday'
         run: echo "${GREETING} ${GITHUB_ACTOR}!! Have a great ${DAY_OF_WEEK}"
         env:
           GREETING: Hello
       - name: print REPO_ENV_VAR
-        run: echo "This is REPO level varirable: ${vars.REPO_ENV_VAR}"
+        run: echo "This is REPO level varirable- ${vars.REPO_ENV_VAR}"
