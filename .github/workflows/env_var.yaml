@@ -22,17 +22,19 @@ jobs:
           echo "GITHUB_SHA: ${GITHUB_SHA}"
           echo "GITHUB_REF: ${GITHUB_REF}"
       - name: print WF_LEVEL_ENV
-        run: echo "${WF_LEVEL_ENV}"
+        run: |
+          echo "This is Workflow level variable: ${WF_LEVEL_ENV}"
+          echo "This is Workflow level variable accessing using env context: ${env.WF_LEVEL_ENV}"
       - name: print JOB_LEVEL_ENV
-        run: echo "${JOB_LEVEL_ENV}"
+        run: echo "This is Job level variable: ${JOB_LEVEL_ENV}"
       - name: print STEP_LEVEL_ENV
         env:
           STEP_LEVEL_ENV: available for this specific step only
-        run: echo "${STEP_LEVEL_ENV}"
+        run: echo "This is Step level variable: ${STEP_LEVEL_ENV}"
       - name: "Say Hello"
         if: env.DAY_OF_WEEK == 'Sunday'
         run: echo "${GREETING} ${GITHUB_ACTOR}!! Have a great ${DAY_OF_WEEK}"
         env:
           GREETING: Hello
       - name: print REPO_ENV_VAR
-        run: echo "This is REPO_ENV_VAR: ${REPO_ENV_VAR}"
+        run: echo "This is REPO level varirable: ${vars.REPO_ENV_VAR}"
