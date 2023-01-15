@@ -1,5 +1,5 @@
 name: accessing information inside worfkflow
-on: [push]
+on: [pull_request]
 env:
   WF_LEVEL_ENV: available for all jobs in this workflow
 
