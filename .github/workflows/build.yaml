@@ -18,8 +18,8 @@ jobs:
     - run: go run name.go
     - uses: actions/upload-artifact@v3
       with:
-      name: coverage-report
-      path: coverage.html
+        name: coverage-report
+        path: coverage.html
   slack_msg_send:
     runs-on: ubuntu-latest
     steps:
