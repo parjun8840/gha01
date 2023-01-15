@@ -17,13 +17,15 @@ jobs:
     - run: go env -w GO111MODULE=auto
     - run: go test -v
     - run: go test -cover -coverprofile=c.out
-    - run: go tool cover -html=c.out -o coverage.html 
+    - run: go tool cover -html=c.out -o coverage.html
+    - run: go build name.go 
     - run: go run name.go
     - uses: actions/upload-artifact@v3
       with:
         name: coverage-report
-        path: coverage.html
-    
+        path: |
+          coverage.html
+          name
   slack_msg_send:
     needs: build
     runs-on: ubuntu-latest
