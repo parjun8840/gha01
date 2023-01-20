@@ -9,7 +9,8 @@ jobs:
       
       - name: Step is going to fail
         run: exit 1
-         
+        continue-on-error: true
+
       - name: Success step 02
         run: echo Success 02 step
 
