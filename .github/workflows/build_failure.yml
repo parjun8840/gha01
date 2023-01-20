@@ -4,14 +4,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build
-        run: bash ${GITHUB_WORKSPACE}/.github/scripts/basic_script.sh 
+        run: |
+          pwd
+          ls -lrtR
+          bash ${GITHUB_WORKSPACE}/.github/build.sh 
       
       - name: test
-        run: bash ${GITHUB_WORKSPACE}/.github/scripts/test_script.sh 
+        run: bash ${GITHUB_WORKSPACE}/.github/test.sh 
         id: test
 
       - name: upload
-        run: bash ${GITHUB_WORKSPACE}/.github/scripts/basic_script.sh
+        run: bash ${GITHUB_WORKSPACE}/.github/scripts/build.sh
         if: success() || steps.test.conclusion == 'failure'
 
       - name: Step To run on failure
