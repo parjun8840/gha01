@@ -1,3 +1,4 @@
+on: [push]
 jobs:
   FailBuildIssueDemo:
     runs-on: ubuntu-latest
