@@ -4,14 +4,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: build
-        run: ./scripts/basic_script.sh 
+        run: bash scripts/basic_script.sh 
       
       - name: test
-        run: ./scripts/basic_script.sh 
+        run: bash /scripts/basic_script.sh 
         id: test
 
       - name: upload
-        run: ./scripts/basic_script.sh
+        run: bash scripts/basic_script.sh
         if: success() || steps.test.conclusion == 'failure'
 
       - name: Step To run on failure
