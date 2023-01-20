@@ -1,18 +1,17 @@
-on: [pull_request]
- 
 jobs:
-  FailJobIssueDemo:
+  FailBuildIssueDemo:
     runs-on: ubuntu-latest
     steps:
-      - name: Success step 01
-        run: echo Success 01 step
+      - name: build
+        run: ./scripts/basic_script.sh 
       
-      - name: Step is going to fail
-        run: exit 1
-        continue-on-error: true
+      - name: test
+        run: ./scripts/basic_script.sh 
+        id: test
 
-      - name: Success step 02
-        run: echo Success 02 step
+      - name: upload
+        run: ./scripts/basic_script.sh
+        if: success() || steps.test.conclusion == 'failure'
 
       - name: Step To run on failure
         if: ${{ failure() }}
