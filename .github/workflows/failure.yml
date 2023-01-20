@@ -13,10 +13,6 @@ jobs:
       - name: Success step 02
         run: echo Success 02 step
 
-      - name: Continue on error step
-        run: echo Continue
-        continue-on-error: true
-
       - name: Step To run on failure
         if: ${{ failure() }}
         run: |
