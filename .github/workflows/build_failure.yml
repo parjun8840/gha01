@@ -7,14 +7,14 @@ jobs:
         run: |
           pwd
           ls -lrtR
-          bash ${GITHUB_WORKSPACE}/.github/build.sh 
+          bash build.sh 
       
       - name: test
-        run: bash ${GITHUB_WORKSPACE}/.github/test.sh 
+        run: bash test.sh 
         id: test
 
       - name: upload
-        run: bash ${GITHUB_WORKSPACE}/.github/scripts/build.sh
+        run: bash build.sh
         if: success() || steps.test.conclusion == 'failure'
 
       - name: Step To run on failure
