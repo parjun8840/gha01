@@ -1,0 +1,30 @@
+on: [push]
+ 
+jobs:
+  FailJobIssueDemo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Success step 01
+        run: echo Success 01 step
+      
+      - name: Step is going to fail
+        run: exit 1
+         
+      - name: Success step 02
+        run: echo Success 02 step
+
+      - name: Continue on error step
+        run: echo Continue
+        continue-on-error: true
+
+      - name: Step To run on failure
+        if: ${{ failure() }}
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Issue created bcz of workflow fialure: ${{ github.run_id }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n due to failure in run: _${{ github.run_id }}_."
+            }'
