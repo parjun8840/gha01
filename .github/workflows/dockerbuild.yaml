@@ -29,4 +29,4 @@ jobs:
           context: ./dockerimage
           file: ./dockerimage/Dockerfile
           push: true
-          tags: ${{ github.sha }}
+          tags: parjun8840/gha:${{ github.sha }}
