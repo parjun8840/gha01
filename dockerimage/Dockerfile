@@ -1,5 +1,5 @@
 FROM alpine:3.7
-MAINTAINER "Arjun Pandey- parjun8840"
+MAINTAINER "Arjun Pandey: parjun8840"
 LABEL description="This could be used for Blue/Green deployment. \
 Just pass the environment vairable SERVICE_NAME as Blue/Green."
 RUN apk update && apk add python3 bash jq ca-certificates curl net-tools
