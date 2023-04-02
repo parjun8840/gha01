@@ -13,7 +13,7 @@ while getopts ":u:t:" opt; do
  case $opt in
    u) slack_url="$OPTARG"
    ;;
-   t) text="$OPTARG"
+   t) text="$OPTARG -From GitHub Action"
    ;;
    \?) echo "Invalid option -$OPTARG" >&2 && usage
    ;;
