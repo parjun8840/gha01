@@ -1,5 +1,11 @@
 name: Slack Send workflow
-on: [workflow_dispatch]
+on: 
+  workflow_dispatch:
+    inputs:
+      text:
+        type: string
+        required: true
+        description: 'Text data'
 jobs:
   SlackSendMsg:
     name: SlackSendMsg Job
@@ -8,7 +14,9 @@ jobs:
       - name: checkout the code
         uses: actions/checkout@v3
       - name: build
+        env:
+          SLACK_URL: ${{ secrets.SLACK_URL }}
         run: |
           pwd
           ls -lrtR
-          bash send_slack.sh
+          bash send_slack.sh -u "$SLACK_URL" -t ${{ github.event.inputs.text }}
