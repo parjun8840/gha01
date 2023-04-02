@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 usage() {
-  echo "usage: ${0##*/} -u <SLACK_URL> -t <TEXT>
+  echo "usage: ${0##*/} -u <SLACK_URL> -t <TEXT>"
   exit 1
 }
 send_slack() {
