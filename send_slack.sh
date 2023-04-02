@@ -6,7 +6,7 @@ usage() {
 }
 send_slack() {
 echo "Sending msg to slack"
-curl -k -X POST -H 'Content-type: application/json' --data "{ \"type\":\"mrkdwn\", \"text\": \"${text}\" }" "${slack_url}"
+curl -k -X POST -H 'Content-type: application/json' --data "{ \"text\": \"${text}\" }" "${slack_url}"
 }
 while getopts ":u:t:" opt; do
 
